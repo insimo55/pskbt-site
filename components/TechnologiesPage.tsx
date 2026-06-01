@@ -27,7 +27,7 @@ export default function TechnologiesPage() {
             initial={{ opacity: 0, y: 40 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
           >
             Технологические <span className="text-primary-500">Решения</span>
           </motion.h1>
