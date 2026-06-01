@@ -1,0 +1,119 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "properties": {
+            "name": "Республика Коми"
+        },
+        "geometry": {
+            "coordinates": [57.54342438106653, 65.99538650778473],
+            "type": "Point"
+        },
+        "id": 0
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "Пермский край"
+        },
+        "geometry": {
+            "coordinates": [56.23918559751712, 58.01002056159649],
+            "type": "Point"
+        },
+        "id": 1
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "Республика Башкирия"
+        },
+        "geometry": {
+            "coordinates": [55.96821745910543, 54.728828276040616],
+            "type": "Point"
+        },
+        "id": 2
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "Казахстан"
+        },
+        "geometry": {
+            "coordinates": [67.3269328559904, 48.301766879178274],
+            "type": "Point"
+        },
+        "id": 3
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "Узбекистан"
+        },
+        "geometry": {
+            "coordinates": [63.19513034945584, 41.80041231807098],
+            "type": "Point"
+        },
+        "id": 4
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "Ханты-Мансийский АО"
+        },
+        "geometry": {
+            "coordinates": [73.02832683420019, 61.52624969479919],
+            "type": "Point"
+        },
+        "id": 5
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "Томская область"
+        },
+        "geometry": {
+            "coordinates": [85.14933093182816, 56.81002174063778],
+            "type": "Point"
+        },
+        "id": 6
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "Самарская область"
+        },
+        "geometry": {
+            "coordinates": [50.248420, 53.249852],
+            "type": "Point"
+        },
+        "id": 7
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "name": "Оренбургская область"
+        },
+        "geometry": {
+            "coordinates": [55.983340, 52.324213],
+            "type": "Point"
+        },
+        "id": 8
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "name": "Красноярский край"
+        },
+        "geometry": {
+            "coordinates": [95.004894, 71.567982],
+            "type": "Point"
+        },
+        "id": 9
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "name": "Иркутская область"
+        },
+        "geometry": {
+            "coordinates": [107.392379, 58.338009],
+            "type": "Point"
+        },
+        "id": 10
+    }
+
+]
+}

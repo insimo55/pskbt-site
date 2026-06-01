@@ -1,0 +1,150 @@
+{
+    "main":{
+        "heroSlides":[
+            {
+                "id": 1,
+                "title": "Буртехнологии",
+                "subtitle": "Технологии для эффективного строительства скважин",
+                "description": "Буровые растворы, технологические жидкости и инженерное сопровождение для нефтегазовых проектов любой сложности.",
+                "buttons":[
+                    {"label":"О компании", "type":"secondary","href":"/about"},
+                    {"label":"Связаться с нами", "type":"primary","href":"/contact"}
+                ],
+                "background": "/images/main/hero-slider/slide-1.png"
+            },
+            {
+                "id": 2,
+                "title": "20+ лет опыта",
+                "subtitle": "Инженерный подход и лабораторный контроль",
+                "description": "Обеспечиваем разработку, подбор и сопровождение буровых растворов с учетом геолого-технических условий проекта.",
+                "buttons": [
+                { "label": "Наши технологии", "type": "primary", "href": "/technologies" }
+                ],
+                "background": "/images/main/hero-slider/slide-2.png"
+            },
+            {
+                "id": 3,
+                "title": "Технологические материалы собственного производства",
+                "subtitle": "Материалы для буровых и тампонажных растворов",
+                "description": "Производим и поставляем технологические материалы для строительства, цементирования и ремонта нефтяных и газовых скважин.",
+                "buttons": [
+                { "label": "Для тампонажных растворов", "type": "primary", "href": "/products/cementing" },
+                { "label": "Для буровых растворов", "type": "primary", "href": "/products/drilling" }
+                ],
+                "background": "/images/main/hero-slider/slide-3.png"
+            }
+        ],
+        "ourAdvantages":[
+            {
+                "image": "/icons/main/advantages/helmet.svg",
+                "title": "Почему выбирают нас",
+                "description": "Наши системы соответствуют международным и национальным стандартам промышленной безопасности."
+            },
+            {
+                "image": "/icons/main/advantages/like.svg",
+                "title": "Наши преимущества",
+                "description": "Только высококачественные буровые растворы, разработанные для повышения эффективности буровых операций."
+            },
+            {
+                "image": "/icons/main/advantages/brain.svg",
+                "title": "Индивидуальные решения",
+                "description": "Подбираем состав бурового раствора с учетом геологических условий и требований заказчика."
+            }
+        ], 
+        "technologies":[
+            {
+                "id":1,
+                "title": "Буровые растворы на водной основе",
+                "background": "/images/main/techzone/watermud.png",
+                "icon": "/icons/main/ic-fluid.svg",
+                "link": "/technologies/1"
+            },
+            {
+                "id":2,
+                "title": "Буровые растворы на УВ основе",
+                "background": "/images/main/techzone/ryo.png",
+                "icon": "/icons/main/ic-fluid.svg",
+                "link": "/technologies/2"
+            },
+            {
+                "id":3,
+                "title": "Тампонажные составы",
+                "background": "/images/main/techzone/cement.png",
+                "icon": "/icons/main/ic-well.svg",
+                "link": "/technologies/3"
+            },
+            {
+                "id":4,
+                "title": "Вязко-упругие составы",
+                "background": "/images/main/techzone/vyz.png",
+                "icon": "/icons/main/ic-wopa.svg",
+                "link": "/technologies/4"
+            }
+        ],
+        "realTechnologies":[
+            {
+                "id":1,
+                "title": "Буровые растворы на водной основе",
+                "descr": "Экологичные, стабильные и адаптируемые системы для широкого спектра применения.",
+                "background": "/images/main/techzone/watermud.png",
+                "icon": "/icons/main/ic-fluid.svg"
+            },
+            {
+                "id":2,
+                "title": "Буровые растворы на углеводородной основе",
+                "descr": "Высокая ингибирующая способность и устойчивость в сложных геологических условиях.",
+                "background": "/images/main/techzone/ryo.png",
+                "icon": "/icons/main/ic-fluid.svg"
+            },
+            {
+                "id":3,
+                "title": "Тампонажные составы",
+                "descr": "Комплексные решения для обеспечения изоляции, устойчивости и долговечного крепления стенок скважин.",
+                "background": "/images/main/techzone/cement.png",
+                "icon": "/icons/main/ic-well.svg"
+            },
+            {
+                "id":4,
+                "title": "Вязко-упругие составы",
+                "descr": "Современные высокотехнологичные жидкости для очистки ствола, глушения и специальных операций.",
+                "background": "/images/main/techzone/vyz.png",
+                "icon": "/icons/main/ic-wopa.svg"
+            },
+            {
+                "id":5,
+                "title": "Технологические жидкости",
+                "descr": "Жидкости для вторичного вскрытия пласта, глушения, буферные системы и специальные составы.",
+                "background": "/images/main/bg-serv-4.png",
+                "icon": "/icons/main/ic-waterwell.svg"
+            }
+        ],
+        "partners": [
+      { "name": "Лукойл", "logo": "/images/main/testimonials/logo-lukoil.png" },
+      { "name": "Роснефть", "logo": "/images/main/testimonials/logo-rosneft.png" },
+      { "name": "Газпром Бурение", "logo": "/images/main/testimonials/logo-gb.png" }
+    ],
+        "testimonials":[
+            {
+                "company": "Газпром нефть",
+                "logo": "/images/main/gpn.png",
+                "text": "Разработанные Вашей компанией рецептуры буровых растворов показали высокую ингибирующую и стабилизирующую способность, при строительстве наклонно-направленных скважин с горизонтальным окончанием, что позволило осуществить безаварийную проводку скважин в осложненных геологических условиях, связанных с пониженными пластовыми давлениями, выполнить качественное вскрытие продуктивного горизонта.",
+                "author": "Н.А. Корнев",
+                "position": "Начальник отдела инжиниринга"
+            },
+            {
+                "company": "Башнефть - Соровскнефть",
+                "logo": "/images/main/testimonials/Bashneft_logo.png",
+                "text": "ООО \"ПСК \"Буртехнологии\" зарекомендовало себя как надежный партнер, нацеленный на качественное оказание услуг. Выражаем Вам благодарность за решение поставленных задач, профессиональный подход, отсутствие инцидентов и НПВ по вине Вашей компании при оказании услуг.",
+                "author": "Ф.Р. Бердин",
+                "position": "Начальник управления бурения"
+            },
+            {
+                "company": "РН-Юганскнефтегаз",
+                "logo": "/images/main/testimonials/logo-rosneft.png",
+                "text": "От лица нашей Компании выражаем благодарность ООО \"ПСК \"Буртехнологии\" за высокое качество и отличную организационную работу, что является следствием высокого профессионального уровня специалистов Вашей организации.",
+                "author": "В.И. Панасенко",
+                "position": "И.о. заместителя генерального директора по бурению"
+            }
+        ]
+    }
+}

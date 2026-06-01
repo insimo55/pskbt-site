@@ -1,0 +1,180 @@
+{
+  "company": {
+    "name": "PSKBT",
+    "fullName": "Petroleum Solutions & Knowledge-Based Technologies",
+    "founded": "1998",
+    "headquarters": {
+      "city": "Houston",
+      "state": "Texas",
+      "country": "United States",
+      "address": "1234 Energy Drive, Suite 500"
+    },
+    "description": "ПСК 'Буртехнологии' - поставщик передовых систем буровых растворов, цементных растворов и инновационных технология для нефтегазовой отрасли. Обладая более чем 25-летним опытом, мы предагаем передовые решения, которые повышают эффективность бурения, обеспечивают целостность и стабильность ствола скважин, оказывают минимальное воздействие на продуктивные горизонты, а также экологичны к окружающей среде",
+    "mission": "To advance the oil and gas industry through innovative drilling fluid technologies, sustainable practices, and exceptional service, while maintaining the highest standards of safety, quality, and environmental responsibility.",
+    "vision": "To be the global leader in drilling fluid innovation, setting industry standards for performance, sustainability, and technological advancement.",
+    "values": [
+      "Высокое качество продукции",
+      "Партнерство с крупными заказчиками",
+      "Индивидуальный подход к каждому заказчику",
+      "Постоянное совершенствование",
+      "Одни из самых лучших цен на рынке"
+    ],
+    "partners": [
+      {
+        "name": "ПАО \"Лукойл\"",
+        "description": "Крупная российская нефтяная компания",
+        "year": "20",
+        "image": "/../images/cert/lukoil.svg"
+      },
+      {
+        "name": "ПАО \"Газпром-Нефть\"",
+        "description": "Ведущая компания в сфере добычи и переработки нефти",
+        "year": "10",
+        "image": "/../images/cert/gpn.svg"
+      },
+      {
+        "name": "ПАО \"Роснефть\"",
+        "description": "Одна из крупнейших публичных нефтегазовых компаний мира",
+        "year": "15",
+        "image": "/../images/cert/rosneft.png"
+      },
+      {
+        "name": "ПАО \"НГК \"Славнефть\"",
+        "description": "Крупное предприятние Восточной Сибири",
+        "year": "15",
+        "image": "/../images/cert/slavneft.svg"
+      }
+      
+    ],
+    "globalPresence": {
+      "regions": [
+        {
+          "name": "Пермский край",
+          "countries": ["Им. Сухарева", "Чернушенское", "Восточно-Гагаринская площадь и другие.."],
+          "image": "/../images/regions/perm.svg"
+        },
+        {
+          "name": "Республика Коми",
+          "countries": ["Усинское", "Сигавейское", "Варандей","Ираельское","Баяндыское и другие..."],
+          "image": "/../images/regions/komi.svg"
+
+        },
+        {
+          "name": "ХМАО",
+          "countries": ["Самотлорское", "Красноленинское", "Приобское","Южно-Приобское и другие..."],
+          "image": "/../images/regions/xmao.svg"
+
+        },
+        {
+          "name": "Казахстан",
+          "countries": ["Кумкольское", "Блиновское", "Таур","Хаиркельды","и другие..."],
+          "image": "/../images/regions/Kazah.svg"
+
+        },
+        {
+          "name": "Узбекистан",
+          "countries": ["Самантепе", "Шоге","Джаракудук","Бельтау", "и другие..."],
+          "image": "/../images/regions/yzbek.svg"
+
+        },
+        {
+          "name": "Красноярский край",
+          "countries": ["Куюмбинское", "Ванкорское", "Тагульское", "и другие..."],
+          "image": "/../images/regions/krasnoyarsk.svg"
+        },
+        {
+          "name": "Оренбургская область",
+          "countries": ["Бузулукское","Тананыкское","Оренбургское", "и другие..."],
+          "image": "/../images/regions/orenbyrg.svg"
+
+        },
+        {
+          "name": "Самарская область",
+          "countries": ["Тверское", "Мухановское","Уваровское","и другие..."],
+          "image": "/../images/regions/samara.svg"
+
+        },
+        {
+          "name": "Томская область",
+          "countries": ["Мыльджинское", "Казанское","Крапивинское","и другие..."],
+          "image": "/../images/regions/tomsk.svg"
+
+        },
+        {
+          "name": "Иркутская область",
+          "countries": ["Ярактинское", "Ковыктинское","и другие..."],
+          "image": "/../images/regions/irkustk.svg"
+
+        },
+        {
+          "name": "Республика Башкортостан",
+          "countries": ["Югомашевское", "Татышлинское","и другие..."],
+          "image": "/../images/regions/baskir.svg"
+
+        }
+      ]
+    }
+  },
+  "leadership": [
+    {
+      "name": "Dr. Sarah Chen",
+      "position": "Chief Executive Officer",
+      "bio": "Dr. Chen brings over 20 years of experience in the oil and gas industry, with expertise in drilling fluid technology and business development. She holds a Ph.D. in Petroleum Engineering from Stanford University.",
+      "image": "/images/team/sarah-chen.jpg",
+      "linkedin": "https://linkedin.com/in/sarah-chen-pskbt"
+    },
+    {
+      "name": "Michael Rodriguez",
+      "position": "Chief Operating Officer",
+      "bio": "Michael has extensive experience in global operations and supply chain management. He previously served as VP of Operations at a major oilfield services company.",
+      "image": "/images/team/michael-rodriguez.jpg",
+      "linkedin": "https://linkedin.com/in/michael-rodriguez-pskbt"
+    },
+    {
+      "name": "Dr. Robert Kim",
+      "position": "Chief Technology Officer",
+      "bio": "Dr. Kim leads PSKBT's research and development efforts, with over 15 years of experience in drilling fluid formulation and advanced materials science.",
+      "image": "/images/team/robert-kim.jpg",
+      "linkedin": "https://linkedin.com/in/robert-kim-pskbt"
+    },
+    {
+      "name": "Jennifer Martinez",
+      "position": "Chief Financial Officer",
+      "bio": "Jennifer brings 18 years of financial leadership experience in the energy sector, with expertise in strategic planning and international finance.",
+      "image": "/images/team/jennifer-martinez.jpg",
+      "linkedin": "https://linkedin.com/in/jennifer-martinez-pskbt"
+    }
+  ],
+  "achievements": [
+    {
+      "year": "2017",
+      "title": "Лучшая сервисная компания 2016-2017 для ПАО \"НК РОСНЕФТЬ\"",
+      "description": "В рамках III ежегодной конференции \"Технологии в области разведки и добычи ПАО \"НК \"Роснефть\" 2017\" получена награда за профессиональные достижения."
+    },
+    {
+      "year": "2021",
+      "title": "Поставлен рекорд по суточной проходке",
+      "description": "При участии ООО \"ПСК \"Буртехнологии\" удалось поставить рекорд по суточной проходке с начала деятельности ООО \"Соровскнефть\" - 115,6 м/ч."
+    },
+    {
+      "year": "2022",
+      "title": "Успешно построеные скважины сложной конструкции",
+      "description": "На Ростовицком месторождении Пермского края при участии ООО \"ПСК \"Буртехнологии\" успешно построены 5 многозабойных скважин с горизонтальным окончанием, в границах Верхнекамского месторождения калийно-магниевых солей. Общая протяженность каждой скважины - более 8000 м."
+    },
+    {
+      "year": "2020",
+      "title": "Выполнены работы с повышенными экологическими требованиями",
+      "description": "В акватории Камского водохранилища, в районе Верхнекамского месторождения калийно-магниевых солей, на месторождении им. В.П. Сухарева -  при участии ООО \"ПСК \"Буртехнологии\" пробурены более 50 скважин, с искусственно созданных насыпных островов."
+    }
+  
+  ],
+  "statistics": {
+    "employees": "500+",
+    "countries": "25+",
+    "patents": "45+",
+    "yearsExperience": "25+",
+    "projectsCompleted": "1000+",
+    "researchPartners": "15+"
+  }
+}
+
