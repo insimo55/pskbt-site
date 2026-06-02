@@ -100,7 +100,7 @@ export default function AboutPage() {
                     {companyData.company.values.map((value, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <FiCheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                        <span className="text-primary-800 font-medium">{value}</span>
+                        <span className="text-primary-800 font-medium text-left">{value}</span>
                       </div>
                     ))}
                   </div>
