@@ -1,18 +1,62 @@
 ﻿'use client'
 
 import { useState } from 'react'
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi'
 import Image from "next/image";
 
+interface NavigationItem {
+  name: string;
+  href: string;
+  dropdown?: { name: string; href: string }[];
+}
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [productDropdown, setProductDropdown] = useState<{ name: string; href: string }[]>([
+    { name: 'Хим.реагенты для цементных растворов', href: '/products/cementing' },
+    { name: 'Хим.реагенты для буровых растворов', href: '/products/drilling' },
+  ])
+  const [technologyDropdown, setTechnologyDropdown] = useState<
+    { name: string; href: string }[]
+  >([
+    { name: 'Системы буровых растворов на водной основе', href: '/technologies/1' },
+    { name: 'Буровые растворы на углеводородной основе', href: '/technologies/2' },
+    { name: 'Тампонажные составы', href: '/technologies/3' },
+    { name: 'Вязко-упругие составы', href: '/technologies/4' },
+    { name: 'Технологические жидкости', href: '/technologies/5' },
+  ])
   const pathname = usePathname()
 
-  const navigation = [
+  useEffect(() => {
+    const loadNavigation = async () => {
+      try {
+        const response = await fetch('/api/navigation')
+        if (!response.ok) return
+        const data = await response.json()
+        if (Array.isArray(data.productCategories) && data.productCategories.length > 0) {
+          setProductDropdown(
+            data.productCategories.map((cat: any) => ({ name: cat.title, href: cat.href }))
+          )
+        }
+        if (Array.isArray(data.technologyCategories) && data.technologyCategories.length > 0) {
+          setTechnologyDropdown(
+            data.technologyCategories.map((cat: any) => ({ name: cat.title, href: cat.href }))
+          )
+        }
+      } catch (error) {
+        console.error('Failed to load navigation:', error)
+      }
+    }
+
+    loadNavigation()
+  }, [])
+
+  const navigation: NavigationItem[] = [
     { name: 'Главная', href: '/' },
     { 
       name: 'О Нас', 
@@ -28,21 +72,11 @@ const Header = () => {
     { 
       name: 'Продукты', 
       href: '/products',
-      dropdown: [
-        { name: 'Хим.реагенты для цементных растворов', href: '/products/cementing' },
-        { name: 'Хим.реагенты для буровых растворов', href: '/products/drilling' }
-
-      ]
+      dropdown: productDropdown
     },
     { name: 'Технологии', 
       href: '/technologies',
-      dropdown: [
-        { name: 'Системы буровых растворов на водной основе', href: '/technologies/1' },
-        { name: 'Буровые растворы на углеводородной основе', href: '/technologies/2' },
-        { name: 'Тампонажные составы', href: '/technologies/3' },
-        { name: 'Вязко-упругие составы', href: '/technologies/4' },
-        { name: 'Технологические жидкости', href: '/technologies/5' },
-      ]
+      dropdown: technologyDropdown
      },
     { name: 'Новости', href: '/press' },
     { name: 'Контакты', href: '/contact' }
