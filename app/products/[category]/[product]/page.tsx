@@ -1,17 +1,32 @@
 // app/products/[category]/[product]/page.tsx
 import type { Metadata } from "next";
 import Image from "next/image";
-import productsData from "@/data/products.json";
 import { StaggerContainer, FadeInUp } from "@/components/animations/Motion";
 import BackButton from "@/components/BackButton";
 import SampleRequestButton from "@/components/SampleRequestButton";
+import { getProducts } from "@/lib/dataManager";
+
+interface ProductItem {
+  id: string;
+  slug: string;
+  name: string;
+  category: string;
+  image: string;
+  longDescription?: string;
+  technical?: Record<string, unknown>;
+  pack?: string;
+  safety_req?: string;
+  transport?: string;
+  application?: string;
+  safety?: { msds?: string };
+}
 
 
 interface Props { params: { category: string, product: string } }
 
 export async function generateStaticParams() {
-  const data = (await import('@/data/products.json')).default;
-  return data.products.map(p => ({ category: p.category, product: p.slug }));
+  const data = await getProducts();
+  return (data.products || []).map((p: any) => ({ category: p.category, product: p.slug }));
 }
 
 
@@ -25,8 +40,9 @@ interface MetadataProps {
 export async function generateMetadata(
   { params }: MetadataProps
 ): Promise<Metadata> {
-  const item = productsData.products.find(
-    (p) => p.category === params.category && p.slug === params.product
+  const productsData = await getProducts();
+  const item = ((productsData.products || []) as ProductItem[]).find(
+    (p: ProductItem) => p.category === params.category && p.slug === params.product
   );
 
   if (!item) {
@@ -75,9 +91,12 @@ export async function generateMetadata(
   };
 }
 
-export default function ProductPage({ params }: Props) {
+export default async function ProductPage({ params }: Props) {
+  const productsData = await getProducts();
   const { category, product } = params;
-  const item = productsData.products.find(p => p.category === category && p.slug === product);
+  const item = ((productsData.products || []) as ProductItem[]).find(
+    (p: ProductItem) => p.category === category && p.slug === product
+  );
   if (!item) return <div className="p-20 text-center">Продукт не найден</div>;
 
   return (
@@ -152,11 +171,12 @@ export default function ProductPage({ params }: Props) {
                           <td className="p-2 border font-medium">{k}</td>
 
                           {/* Если объект с подкатегориями */}
-                          {typeof v === "object" && !Array.isArray(v) ? (
+                          {typeof v === "object" && v !== null && !Array.isArray(v) ? (
                             (() => {
+                              const valueMap = v as Record<string, string>;
                               const entries = subColHeaders.map((col) => ({
                                 col,
-                                value: v[col] || "-",
+                                value: valueMap[col] || "-",
                               }));
 
                               const cells: JSX.Element[] = [];
@@ -191,7 +211,7 @@ export default function ProductPage({ params }: Props) {
                             })()
                           ) : (
                             <td className="p-2 border text-center">
-                              {Array.isArray(v) ? v.join(", ") : v}
+                              {Array.isArray(v) ? v.join(", ") : String(v ?? "-")}
                             </td>
                           )}
                         </tr>

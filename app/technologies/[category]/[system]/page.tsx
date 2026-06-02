@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import technologiesData from "@/data/technologies.json";
 import SystemPage from "../../../../components/SystemPage";
+import { getTechnologies } from "@/lib/dataManager";
 
 interface Props {
   params: {
@@ -10,7 +10,8 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return technologiesData.systems.map((system) => ({
+  const technologiesData = await getTechnologies();
+  return (technologiesData.systems || []).map((system: any) => ({
     category: system.categoryId,
     system: system.slug,
   }));
@@ -19,8 +20,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
-  const item = technologiesData.systems.find(
-    (s) => s.slug === params.system
+  const technologiesData = await getTechnologies();
+  const item = (technologiesData.systems || []).find(
+    (s: any) => s.slug === params.system
   );
 
   if (!item) {
@@ -71,6 +73,9 @@ export async function generateMetadata({
   };
 }
 
-export default function Page({ params }: Props) {
-  return <SystemPage params={params} />;
+export default async function Page({ params }: Props) {
+  const technologiesData = await getTechnologies();
+  const systemData =
+    (technologiesData.systems || []).find((s: any) => s.slug === params.system) || null;
+  return <SystemPage params={params} systemData={systemData} />;
 }

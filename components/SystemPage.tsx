@@ -3,18 +3,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import technologiesData from "@/data/technologies.json";
 import { StaggerContainer, FadeInUp } from "@/components/animations/Motion"; // Твои компоненты
 import BackButton from "@/components/BackButton"; // Твой компонент
 import SampleRequestButton from "@/components/SampleRequestButton_tech"; // Твой компонент
 
-interface Props { params: { category: string, system: string } }
+interface TechSystem {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle?: string;
+  heroImage?: string;
+  specs?: Record<string, string>;
+  fullDescription?: string;
+  advantages?: string[];
+  applicationArea?: string;
+  components?: { name: string; slug?: string; category: string }[];
+}
 
-export default function SystemPage({ params }: Props) {
-  const { category, system } = params;
-  
-  // Ищем систему по slug
-  const item = technologiesData.systems.find(s => s.slug === system); 
+interface Props {
+  params: { category: string, system: string };
+  systemData: TechSystem | null;
+}
+
+export default function SystemPage({ params, systemData }: Props) {
+  const { category } = params;
+  const item = systemData;
   
   if (!item) return <div className="min-h-screen flex items-center justify-center text-2xl font-bold">Система не найдена</div>;
 

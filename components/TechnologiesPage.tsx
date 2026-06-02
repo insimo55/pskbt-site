@@ -4,11 +4,21 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiChevronRight, FiCheckCircle, FiTrendingUp, FiGlobe } from 'react-icons/fi';
-import techData from "@/data/technologies.json";
 // import companyData from "@/data/main.json"; // Оставил, если понадобится позже
 
-export default function TechnologiesPage() {
-  const services = techData.realTechnologies;
+interface TechCategory {
+  id: string;
+  title: string;
+  descr: string;
+  background: string;
+  icon: string;
+}
+
+interface TechnologiesPageProps {
+  services: TechCategory[];
+}
+
+export default function TechnologiesPage({ services }: TechnologiesPageProps) {
 
   // Данные для новой секции "Преимущества" (можно тоже потом вынести в JSON)
   const advantages = [

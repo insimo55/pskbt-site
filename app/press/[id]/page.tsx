@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { news } from '@/data/press';
+import { getNews } from '@/lib/dataManager';
 import { getNewsContent } from '@/lib/newsContent';
 import NewsView from "@/components/NewsView";
 
+interface NewsMeta {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  image: string;
+  category: string;
+  readTime?: string;
+}
+
 // Эта функция нужна для генерации статических страниц (SSG) при билде - круто для SEO
 export async function generateStaticParams() {
-  return news.map((post) => ({
+  const news = (await getNews()) as NewsMeta[];
+  return news.map((post: NewsMeta) => ({
     id: post.id,
   }));
 }
@@ -15,7 +26,8 @@ export async function generateMetadata({
 }: {
   params: { id: string };
 }): Promise<Metadata> {
-  const post = news.find((p) => p.id === params.id);
+  const news = (await getNews()) as NewsMeta[];
+  const post = news.find((p: NewsMeta) => p.id === params.id);
 
   if (!post) {
     return {
@@ -64,8 +76,8 @@ export async function generateMetadata({
 
 // Сам компонент страницы
 export default async function Page({ params }: { params: { id: string } }) {
-  // 1. Ищем мету в JSON
-  const post = news.find((p) => p.id === params.id);
+  const news = (await getNews()) as NewsMeta[];
+  const post = news.find((p: NewsMeta) => p.id === params.id);
 
   if (!post) {
     notFound(); // Покажет стандартную страницу 404

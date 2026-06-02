@@ -2,16 +2,34 @@
 'use client';
 import Image from "next/image";
 import Link from "next/link";
-import productsData from "@/data/products.json";
 import ProductsFilter from "@/components/ProductsFilter"; // client component for search
 import { motion } from "framer-motion";
 
-interface Props { params: { category: string } }
+interface ProductCategory {
+  id: string;
+  title: string;
+  description: string;
+}
 
-export default function CategoryPage({ params }: Props) {
+interface ProductItem {
+  id: string;
+  slug: string;
+  name: string;
+  image: string;
+  shortDescription: string;
+  category: string;
+}
+
+interface Props {
+  params: { category: string };
+  categories: ProductCategory[];
+  products: ProductItem[];
+}
+
+export default function CategoryPage({ params, categories, products }: Props) {
   const categoryId = params.category;
-  const category = productsData.categories.find(c => c.id === categoryId);
-  const items = productsData.products.filter(p => p.category === categoryId);
+  const category = categories.find(c => c.id === categoryId);
+  const items = products.filter(p => p.category === categoryId);
 
   const handleCardClick = (productId: string) => {
     // Replace with your analytics/logic as needed

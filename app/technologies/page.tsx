@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import TechnologiesPage from '../../components/TechnologiesPage';
+import { getTechnologies } from "@/lib/dataManager";
 
 export const metadata: Metadata = {
   title: "Технологические решения | ПСК «Буртехнологии»",
@@ -50,6 +51,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <TechnologiesPage />;
+export default async function Page() {
+  const techData = await getTechnologies();
+  return <TechnologiesPage services={techData.realTechnologies || []} />;
 }

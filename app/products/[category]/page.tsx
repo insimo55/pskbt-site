@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CategoryPage from "../../../components/CategoryPage";
+import { getProducts } from "@/lib/dataManager";
 
 interface Props {
   params: {
@@ -62,6 +63,13 @@ export async function generateMetadata(
   );
 }
 
-export default function Page({ params }: Props) {
-  return <CategoryPage params={params} />;
+export default async function Page({ params }: Props) {
+  const data = await getProducts();
+  return (
+    <CategoryPage
+      params={params}
+      categories={data.categories || []}
+      products={data.products || []}
+    />
+  );
 }

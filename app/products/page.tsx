@@ -1,8 +1,8 @@
 // app/products/page.tsx
 import Link from "next/link";
 import Image from "next/image";
-import productsData from "@/data/products.json";
 import { Metadata } from "next";
+import { getProducts } from "@/lib/dataManager";
 
 export const metadata: Metadata = {
   title: "Продукция",
@@ -10,8 +10,14 @@ export const metadata: Metadata = {
     "Реагенты для буровых растворов и тампонажных составов собственного производства.",
 };
 
-export default function ProductsIndexPage() {
-  const categories = productsData.categories;
+export default async function ProductsIndexPage() {
+  const productsData = await getProducts();
+  const categories = (productsData.categories || []) as Array<{
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+  }>;
 
   return (
     <main className="py-20">

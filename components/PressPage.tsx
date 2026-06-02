@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { FiCalendar, FiArrowRight, FiClock, FiStar } from "react-icons/fi";
-import { news } from '@/data/press';
 
 // 1. Интерфейс
 interface NewsItem {
@@ -16,13 +15,6 @@ interface NewsItem {
   readTime?: string;
   category: string;
 }
-
-// 2. Данные (добавил 4-ю новость, чтобы сетка была красивой: 1 большая + 3 маленьких)
-const newsData = news;
-
-// Разделяем новости: первая главная, остальные обычные
-const featuredNews = newsData[0];
-const regularNews = newsData.slice(1);
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -37,7 +29,13 @@ const itemVariants = {
   visible: { y: 0, opacity: 1 },
 };
 
-export default function PressPage() {
+interface PressPageProps {
+  news: NewsItem[];
+}
+
+export default function PressPage({ news }: PressPageProps) {
+  const featuredNews = news[0];
+  const regularNews = news.slice(1);
   return (
     <section className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-16 px-4 sm:px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">

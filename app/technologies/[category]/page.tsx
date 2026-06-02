@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import technologiesData from "@/data/technologies.json";
 import TechCategoryPage from "../../../components/TechCategoryPage";
+import { getTechnologies } from "@/lib/dataManager";
 
 interface Props {
   params: {
@@ -11,8 +11,9 @@ interface Props {
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
-  const category = technologiesData.realTechnologies.find(
-    c => c.id === params.category
+  const technologiesData = await getTechnologies();
+  const category = (technologiesData.realTechnologies || []).find(
+    (c: any) => c.id === params.category
   );
 
   if (!category) {
@@ -30,6 +31,13 @@ export async function generateMetadata(
   };
 }
 
-export default function Page({ params }: Props) {
-  return <TechCategoryPage params={params} />;
+export default async function Page({ params }: Props) {
+  const technologiesData = await getTechnologies();
+  return (
+    <TechCategoryPage
+      params={params}
+      categories={technologiesData.realTechnologies || []}
+      systemsData={technologiesData.systems || []}
+    />
+  );
 }

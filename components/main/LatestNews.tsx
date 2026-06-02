@@ -4,9 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiArrowRight, FiCalendar } from "react-icons/fi";
-import { news } from "@/data/press"; // Импортируем данные
 
-export default function LatestNews() {
+interface NewsItem {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  image: string;
+  readTime?: string;
+  category: string;
+}
+
+interface LatestNewsProps {
+  news: NewsItem[];
+}
+
+export default function LatestNews({ news }: LatestNewsProps) {
   // Берем только первые 3 новости
   // 1-я пойдет в большую карточку, 2-я и 3-я в боковую колонку
   const latestNews = news.slice(0, 3);

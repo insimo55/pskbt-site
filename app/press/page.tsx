@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PressPage from "../../components/PressPage";
+import { getNews } from "@/lib/dataManager";
 
 export const metadata: Metadata = {
   title: "Новости компании | ПСК Буртехнологии",
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <PressPage />;
+export default async function Page() {
+  const news = await getNews();
+  return <PressPage news={news} />;
 }

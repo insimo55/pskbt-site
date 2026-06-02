@@ -4,14 +4,35 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FiArrowLeft } from "react-icons/fi";
-import technologiesData from "@/data/technologies.json";
 
-interface Props { params: { category: string } }
+interface TechCategory {
+  id: string;
+  title: string;
+  descr: string;
+}
 
-export default function TechCategoryPage({ params }: Props) {
+interface TechSystem {
+  id: string;
+  categoryId: string;
+  slug: string;
+  title: string;
+  subtitle?: string;
+  tags?: string[];
+  shortDescription: string;
+  cardImage?: string;
+  categorySpecs?: Record<string, string>;
+}
+
+interface Props {
+  params: { category: string };
+  categories: TechCategory[];
+  systemsData: TechSystem[];
+}
+
+export default function TechCategoryPage({ params, categories, systemsData }: Props) {
   const categoryId = params.category;
-  const category = technologiesData.realTechnologies.find(c => c.id === categoryId);
-  const systems = technologiesData.systems.filter(s => s.categoryId === categoryId);
+  const category = categories.find(c => c.id === categoryId);
+  const systems = systemsData.filter(s => s.categoryId === categoryId);
 
   if (!category) {
     return (
@@ -72,7 +93,7 @@ export default function TechCategoryPage({ params }: Props) {
                       </div>
 
                       <div className="flex flex-wrap gap-2 mb-6">
-                        {system.tags.map(tag => (
+                        {(system.tags || []).map(tag => (
                           <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium group-hover:bg-primary-50 group-hover:text-primary-700 transition-colors">
                             {tag}
                           </span>
