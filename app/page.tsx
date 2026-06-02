@@ -21,7 +21,7 @@ export default async function Home() {
     href: `/products/${cat.id}`,
     image: cat.image,
   }));
-  const techCategories = (techData.realTechnologies || []).map((cat: any) => ({
+  const techCategories = (techData.technologies || []).map((cat: any) => ({
     id: cat.id,
     title: cat.title,
     href: `/technologies/${cat.id}`,
