@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     await mkdir(dir, { recursive: true });
     await writeFile(filePath, buffer);
 
-    const publicPath = `/images/${finalFolder}/${filename}`;
+    const publicPath = `/uploads/${finalFolder}/${filename}`;
     return NextResponse.json({ success: true, path: publicPath, filename });
   } catch (error) {
     console.error('Upload error:', error);
