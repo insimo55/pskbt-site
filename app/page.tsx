@@ -35,7 +35,7 @@ export default async function Home() {
       {/* Остальные секции */}
       <OurServices/>
       <Testimonials/>
-      <ProductsPreview products={productCategories} />
+      <ProductsPreview/>
       <LatestNews news={news} />
     </>
   );

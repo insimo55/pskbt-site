@@ -4,18 +4,20 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-interface ProductCategoryPreview {
-  id: string;
-  title: string;
-  href: string;
-  image?: string;
-}
+const products = [
+  {
+    title: "Тампонижные составы",
+    image: "/images/main/products/cement.jpg",
+    link: "/products/cementing",
+  },
+  {
+    title: "Буровые растворы",
+    image: "/images/main/products/mud.jpg",
+    link: "/products/drilling",
+  },
+];
 
-interface ProductsPreviewProps {
-  products: ProductCategoryPreview[];
-}
-
-export default function ProductsPreview({ products }: ProductsPreviewProps) {
+export default function ProductsPreview() {
   return (
     <section className="py-5 sm:py-20 bg-white">
       <div className="container-custom text-center px-4 sm:px-6">
@@ -39,7 +41,7 @@ export default function ProductsPreview({ products }: ProductsPreviewProps) {
               {/* Изображение */}
               <div className="relative w-full h-48 sm:h-64 overflow-hidden">
                 <Image
-                  src={product.image || "/images/main/products/mud.jpg"}
+                  src={product.image}
                   alt={product.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -61,7 +63,7 @@ export default function ProductsPreview({ products }: ProductsPreviewProps) {
                     {/* Блок кнопки — изначально скрыт за счёт max-h и opacity */}
                     <div className="absolute inset-x-0 bottom-6 opacity-0 translate-y-10 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0">
                         <Link
-                        href={product.href}
+                        href={product.link}
                         className="inline-block px-6 py-2 border border-primary-500 text-primary-500 rounded-lg
                       bg-white/90 hover:bg-primary-500 hover:text-white transition"
                         >
@@ -91,4 +93,3 @@ export default function ProductsPreview({ products }: ProductsPreviewProps) {
     </section>
   );
 }
-
