@@ -52,7 +52,46 @@ export async function POST(request: NextRequest) {
     }
 
     await saveTechnologies(technologies);
-    return NextResponse.json({ success: true });
+    const revalidateSecret = process.env.ADMIN_SESSION_SECRET; // Убедись, что ADMIN_SESSION_SECRET определен в .env.production
+    if (!revalidateSecret) {
+      console.error('ADMIN_SESSION_SECRET is not defined. Revalidation skipped.');
+      // Можно вернуть ошибку или просто продолжить без ревалидации
+    } else {
+      const revalidateUrl = `http://localhost:3000/admin/api/revalidate?secret=${revalidateSecret}`; // ИЛИ абсолютный URL твоего сайта
+                                                                                                    // например, `https://chem-application.ru/admin/api/revalidate?secret=${revalidateSecret}`
+                                                                                                    // Если этот роут вызывается изнутри сервера (как здесь),
+                                                                                                    // то `http://localhost:3000` обычно работает лучше,
+                                                                                                    // так как избегает лишнего сетевого трафика через Nginx.
+
+      // Определяем, какие пути нужно перевалидировать.
+      // Если ты добавил/удалил/обновил категорию или систему,
+      // затрагиваются страницы категорий и отдельных систем.
+      const pathsToRevalidate = [
+        '/technologies', // Главная страница технологий, если она есть
+        '/technologies/[category]', // Шаблон для всех страниц категорий
+        '/technologies/[category]/[system]', // Шаблон для всех страниц систем
+      ];
+
+      try {
+        const revalidateResponse = await fetch(revalidateUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ paths: pathsToRevalidate }),
+        });
+
+        if (revalidateResponse.ok) {
+          console.log('Pages revalidated successfully after technologies update!');
+        } else {
+          console.error('Failed to revalidate pages:', await revalidateResponse.text());
+        }
+      } catch (revalidateError) {
+        console.error('Error during revalidation fetch:', revalidateError);
+      }
+    }
+
+    return NextResponse.json({ success: true, revalidated: true });
   } catch (error) {
     console.error('Error updating technologies:', error);
     return NextResponse.json({ error: 'Failed to update technologies' }, { status: 500 });

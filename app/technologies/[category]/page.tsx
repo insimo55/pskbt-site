@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import TechCategoryPage from "../../../components/TechCategoryPage";
 import { getTechnologies } from "@/lib/dataManager";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
 
 interface Props {
   params: {
