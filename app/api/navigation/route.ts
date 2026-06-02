@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { getProducts, getTechnologies } from '@/lib/dataManager';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET() {
   try {
     const [productsData, technologiesData] = await Promise.all([

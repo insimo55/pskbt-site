@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, unlink } from 'fs/promises';
+import { writeFile, unlink, mkdir } from 'fs/promises';
 import path from 'path';
 import { isAuthenticated } from '@/lib/auth';
 import { existsSync } from 'fs';
@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File;
-    const folder = formData.get('folder') as string;
+    const folder = (formData.get('folder') as string) || 'uploads';
 
     if (!file) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 });
@@ -30,22 +30,26 @@ export async function POST(request: NextRequest) {
 
     // Create safe filename
     const timestamp = Date.now();
-    const extension = file.name.split('.').pop();
+    const extension = file.name.split('.').pop() || 'png';
     const filename = `${timestamp}.${extension}`;
-    const filePath = path.join(process.cwd(), 'public', 'images', folder || 'uploads', filename);
+    const safeFolder = folder
+      .split('/')
+      .map((segment) => segment.trim())
+      .filter(Boolean)
+      .filter((segment) => /^[a-zA-Z0-9_-]+$/.test(segment))
+      .join('/');
+    const finalFolder = safeFolder || 'uploads';
+    const uploadsRoot = process.env.UPLOADS_DIR
+      ? path.resolve(process.env.UPLOADS_DIR)
+      : path.join(process.cwd(), 'public', 'images');
+    const filePath = path.join(uploadsRoot, finalFolder, filename);
 
     // Create directory if it doesn't exist
     const dir = path.dirname(filePath);
-    try {
-      await writeFile(filePath, buffer);
-    } catch {
-      // Directory might not exist, create it
-      const { mkdir } = await import('fs/promises');
-      await mkdir(dir, { recursive: true });
-      await writeFile(filePath, buffer);
-    }
+    await mkdir(dir, { recursive: true });
+    await writeFile(filePath, buffer);
 
-    const publicPath = `/images/${folder || 'uploads'}/${filename}`;
+    const publicPath = `/images/${finalFolder}/${filename}`;
     return NextResponse.json({ success: true, path: publicPath, filename });
   } catch (error) {
     console.error('Upload error:', error);
@@ -69,7 +73,14 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid filename' }, { status: 400 });
     }
 
-    const filePath = path.join(process.cwd(), 'public', filename.startsWith('/') ? filename.slice(1) : filename);
+    const uploadsRoot = process.env.UPLOADS_DIR
+      ? path.resolve(process.env.UPLOADS_DIR)
+      : path.join(process.cwd(), 'public', 'images');
+    const normalized = filename.replace(/^\/+/, '');
+    const stripped = normalized.startsWith('images/')
+      ? normalized.slice('images/'.length)
+      : normalized;
+    const filePath = path.join(uploadsRoot, stripped);
     
     if (existsSync(filePath)) {
       await unlink(filePath);

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import CategoryPage from "../../../components/CategoryPage";
 import { getProducts } from "@/lib/dataManager";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface Props {
   params: {
     category: string;

@@ -35,7 +35,7 @@ const Header = () => {
   useEffect(() => {
     const loadNavigation = async () => {
       try {
-        const response = await fetch('/api/navigation')
+        const response = await fetch('/api/navigation', { cache: 'no-store' })
         if (!response.ok) return
         const data = await response.json()
         if (Array.isArray(data.productCategories) && data.productCategories.length > 0) {

@@ -6,6 +6,9 @@ import ProductsPreview from '@/components/main/ProductsPreview';
 import LatestNews from '@/components/main/LatestNews';
 import { getNews, getProducts, getTechnologies } from '@/lib/dataManager';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function Home() {
   const [news, productsData, techData] = await Promise.all([
     getNews(),
