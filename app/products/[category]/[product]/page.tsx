@@ -6,6 +6,9 @@ import BackButton from "@/components/BackButton";
 import SampleRequestButton from "@/components/SampleRequestButton";
 import { getProducts } from "@/lib/dataManager";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface ProductItem {
   id: string;
   slug: string;

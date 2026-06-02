@@ -4,6 +4,9 @@ import { getNews } from '@/lib/dataManager';
 import { getNewsContent } from '@/lib/newsContent';
 import NewsView from "@/components/NewsView";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface NewsMeta {
   id: string;
   title: string;
