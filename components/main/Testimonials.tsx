@@ -104,13 +104,13 @@ export default function Testimonials() {
             {/* Стрелки */}
             <div
               ref={prevRef}
-              className="absolute hidden sm:block bottom-[50%] left-1 -translate-x-16 translate-y-full z-10 cursor-pointer p-3 text-gray-700 hover:text-primary-600 hover:scale-150 transition-all"
+              className="absolute hidden bottom-[50%] left-1 -translate-x-16 translate-y-full z-10 cursor-pointer p-3 text-gray-700 hover:text-primary-600 hover:scale-150 transition-all"
             >
               ←
             </div>
             <div
               ref={nextRef}
-              className="absolute hidden sm:block bottom-[50%] right-1 translate-x-8 translate-y-full z-10 cursor-pointer p-3 text-gray-700 hover:text-primary-600 hover:scale-150 transition-all"
+              className="absolute hidden bottom-[50%] right-1 translate-x-8 translate-y-full z-10 cursor-pointer p-3 text-gray-700 hover:text-primary-600 hover:scale-150 transition-all"
             >
               →
             </div>

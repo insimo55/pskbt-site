@@ -2,20 +2,10 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import companyData from "@/data/main.json";
 
-interface ServiceCategory {
-  id: string;
-  title: string;
-  href: string;
-  background?: string;
-  icon?: string;
-}
-
-interface OurServicesProps {
-  services: ServiceCategory[];
-}
-
-export default function OurServices({ services }: OurServicesProps) {
+export default function OurServices() {
+  const services = companyData.main.technologies;
 
   return (
     <section className="relative py-20 bg-[url('/images/main/bg_services.png')] bg-center bg-cover">
@@ -63,11 +53,11 @@ export default function OurServices({ services }: OurServicesProps) {
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               {/* Контент */}
-              <Link href={service.href}>
+              <a href={service.link}>
                 <div className="relative z-10 flex flex-col items-center justify-center h-52 p-6 text-center min-w-full sm:min-w-[285px] min-h-[200px] sm:min-h-[285px]">
                 <div className="w-14 h-14 mb-4 flex items-center justify-center">
                   <img
-                    src={service.icon || "/icons/main/ic-fluid.svg"}
+                    src={service.icon}
                     alt={service.title}
                     className="transition-all duration-500 group-hover:invert group-hover:brightness-0"
                   />
@@ -76,7 +66,7 @@ export default function OurServices({ services }: OurServicesProps) {
                   {service.title}
                 </h3>
               </div>
-              </Link>
+              </a>
             </motion.div>
           ))}
         </div>
@@ -97,4 +87,3 @@ export default function OurServices({ services }: OurServicesProps) {
     </section>
   );
 }
-
