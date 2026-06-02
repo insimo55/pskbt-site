@@ -35,4 +35,4 @@ export const news = [
         "readTime": "3 мин",
         "category": "Разработка"
     }
-   ]
+];

@@ -12,6 +12,7 @@
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.2.5",
     "framer-motion": "^10.16.16",
+    "iron-session": "^8.0.4",
     "leaflet": "^1.9.4",
     "next": "14.0.4",
     "nodemailer": "^7.0.12",

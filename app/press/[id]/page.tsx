@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import fs from "fs";
-import path from "path";
 import { notFound } from "next/navigation";
-// Импортируем твои данные
 import { news } from '@/data/press';
+import { getNewsContent } from '@/lib/newsContent';
 import NewsView from "@/components/NewsView";
 
 // Эта функция нужна для генерации статических страниц (SSG) при билде - круто для SEO
@@ -73,18 +71,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     notFound(); // Покажет стандартную страницу 404
   }
 
-  // 2. Читаем файл с контентом
-  // Путь: корень_проекта/content/ID.md
-  const filePath = path.join(process.cwd(), "content", `${post.id}.md`);
-  
-  let content = "";
-  
-  try {
-    content = fs.readFileSync(filePath, "utf8");
-  } catch (error) {
-    console.error(`Файл контента не найден: ${filePath}`);
-    content = "Текст новости временно недоступен."; 
-  }
+  const markdown = await getNewsContent(post.id);
+  const content = markdown ?? "Текст новости временно недоступен.";
 
   // 3. Передаем всё в клиентский компонент
   return <NewsView post={post} content={content} />;
