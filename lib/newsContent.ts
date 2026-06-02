@@ -2,7 +2,10 @@ import fs from 'fs/promises';
 import path from 'path';
 export { createNewsContentTemplate, DEFAULT_NEWS_CONTENT } from './newsContentTemplates';
 
-const contentDir = path.join(process.cwd(), 'content');
+const defaultContentDir = path.join(process.cwd(), 'content');
+const contentDir = process.env.CONTENT_DIR
+  ? path.resolve(process.env.CONTENT_DIR)
+  : defaultContentDir;
 
 export function sanitizeNewsId(id: string): string {
   const cleaned = id.trim();
