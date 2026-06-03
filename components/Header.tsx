@@ -175,26 +175,30 @@ const Header = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
+              initial={{ opacity: 0, y: -50 }} // Изменено: теперь меню появляется сверху, а не расширяется по высоте
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }} // Изменено: исчезает вверх
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-gray-200"
+              // !!! ДОБАВЛЕНЫ КЛАССЫ !!!
+              className="lg:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 bg-white z-40 overflow-y-auto border-t border-gray-200"
+              // `top-16` или `top-20` должны соответствовать высоте твоего хедера, чтобы меню начиналось сразу под ним.
+              // `bottom-0` заставляет его занимать всю оставшуюся высоту.
+              // `z-40` чтобы оно было поверх контента, но под основным хедером (z-50)
             >
-              <div className="py-4 space-y-2">
+              <div className="py-4 space-y-2 px-4"> {/* Добавлен px-4 для отступов */}
                 {navigation.map((item) => (
                   <div key={item.name}>
                     <Link
-                      href={item.href}
-                      className={`block px-4 py-2 text-base font-medium rounded-md transition-colors  ${
-                        isActive(item.href) 
-                          ? 'text-primary-600 bg-primary-50' 
-                          : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                      }`}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
+                  href={item.href}
+                  className={`block px-4 py-2 text-base font-medium rounded-md transition-colors  ${
+                    isActive(item.href) 
+                      ? 'text-primary-600 bg-primary-50' 
+                      : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
                     {item.dropdown && (
                       <div className="ml-4 mt-2 space-y-1">
                         {item.dropdown.map((subItem) => (
@@ -211,7 +215,7 @@ const Header = () => {
                     )}
                   </div>
                 ))}
-                <div className="px-4 pt-4">
+                <div className="px-4 pt-4"> {/* Здесь px-4 уже был, но убедись */}
                   <Link href="/contact" className="btn-primary text-sm w-full text-center">
                     Связаться с Нами
                   </Link>
