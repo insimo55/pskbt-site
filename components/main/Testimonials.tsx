@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 // стили
@@ -17,6 +17,15 @@ export default function Testimonials() {
   const nextRef = useRef<HTMLDivElement | null>(null);
 
   const testimonials = companyData.main.testimonials;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <section className="py-10 pb-0 sm:py-20 bg-gray-50">
