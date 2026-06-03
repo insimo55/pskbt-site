@@ -18,7 +18,7 @@ export default function OurServices() {
           transition={{ duration: 0.6 }}
           className="text-2xl sm:text-3xl font-bold mb-4"
         >
-          Наши технологии
+          Наши <span className="text-primary-600">технологии</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 30 }}
@@ -70,6 +70,15 @@ export default function OurServices() {
             </motion.div>
           ))}
         </div>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto mb-12"
+        >
+          Наличие права на применение запатентованных технологий и рецептур в области буровых и тампонажных растворов в рамках лицензионного договора с ООО "Лукойл-Инжиниринг" "ПермНИПИнефть".
+        </motion.p>
 
         {/* CTA */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6">

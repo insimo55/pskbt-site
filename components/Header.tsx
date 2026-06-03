@@ -90,7 +90,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <div className="relative w-auto h-16"> 
+            <div className="relative  h-16 sm:scale-[80%]"> 
               <img src="/images/logoF.svg" alt="main logo" className="object-contain"/>
             </div>
             <div>
@@ -98,12 +98,12 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 lg:space-x-8">
+          <nav className="hidden lg:flex items-center lg:space-x-4 xl:space-x-8 whitespace-nowrap">
             {navigation.map((item) => (
               <div key={item.name} className="relative">
                 {item.dropdown ? (
                   <div
-                    className="flex items-center space-x-1 cursor-pointer group"
+                    className="flex items-center space-x-1 cursor-pointer group "
                     onMouseEnter={() => setActiveDropdown(item.name)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
@@ -144,7 +144,7 @@ const Header = () => {
                 ) : (
                   <Link
                     href={item.href}
-                    className={`text-sm font-medium transition-colors ${
+                    className={`text-xs sm:text-sm font-medium transition-colors ${
                       isActive(item.href) ? 'text-primary-600' : 'text-gray-700 hover:text-primary-600'
                     }`}
                   >
@@ -156,8 +156,8 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Link href="/contact" className="btn-primary">
+          <div className="hidden lg:block ">
+            <Link href="/contact" className="btn-primary whitespace-nowrap ">
               Связаться с Нами
             </Link>
           </div>
@@ -212,7 +212,7 @@ const Header = () => {
                   </div>
                 ))}
                 <div className="px-4 pt-4">
-                  <Link href="/contact" className="btn-primary w-full text-center">
+                  <Link href="/contact" className="btn-primary text-sm w-full text-center">
                     Связаться с Нами
                   </Link>
                 </div>
