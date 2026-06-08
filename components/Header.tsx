@@ -103,7 +103,7 @@ const Header = () => {
               <div key={item.name} className="relative">
                 {item.dropdown ? (
                   <div
-                    className="flex items-center space-x-1 cursor-pointer group "
+                    className="flex items-center space-x-1 cursor-pointer group whitespace-normal"
                     onMouseEnter={() => setActiveDropdown(item.name)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
