@@ -24,7 +24,7 @@ const Footer = () => {
               Надёжный партнёр в области буровых и цементных растворов, предлагающий инновационные решения для нефтегазовой промышленности.
             </p>
             <div className="flex space-x-3 sm:space-x-4">
-              <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
+              {/* <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
                 <FiLinkedin className="w-5 h-5" />
               </a>
               <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
@@ -32,7 +32,7 @@ const Footer = () => {
               </a>
               <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
                 <FiFacebook className="w-5 h-5" />
-              </a>
+              </a> */}
             </div>
           </div>
 
